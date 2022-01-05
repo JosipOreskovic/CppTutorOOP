@@ -1,10 +1,10 @@
 #include "MyDerivedClass.h"
 
-int MyDerivedClass::GetZ() { return z; }
+int MyDerivedClass::GetZ() { return m_z; }
 
 void MyDerivedClass::Func()
 {
-	std::cout << __func__ << " in base class MyClass." << std::endl;
+	std::cout << __func__ << " in child class MyClass." << std::endl;
 }
 
 void MyDerivedClass::VirtualFunction()

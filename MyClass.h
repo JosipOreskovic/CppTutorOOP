@@ -5,36 +5,31 @@
 
 class MyClass
 {
-	int x;
-	int y;
-	static int si;
+	int m_x;
+	int m_y;
+	int* m_pi;
+
+	static int s_i;
+	
 public:
-	MyClass() : x(0), y(0) { std::cout << __func__ << " default constructor" << std::endl; }
-	MyClass(const int x, const int y) : x(x), y(y) { std::cout << __func__ << " 1. overload constructor" << std::endl; }
-	MyClass(const MyClass& mc)
-	{
-		this->x = mc.x;
-		this->y = mc.y;
-		std::cout << __func__ << " copy constructor" << std::endl;
-	}
-	MyClass& operator=(const MyClass& mc)
-	{
-		this->x = mc.x;
-		this->y = mc.y;
-		std::cout << __func__ << " = operator" << std::endl;
-		return *this;
-	}
-	~MyClass() { std::cout << __func__ << " destructor" << std::endl; }
+	MyClass();
+	MyClass(const int x, const int y);
 
-	friend std::ostream& operator<<(std::ostream& os, const MyClass& mc);
-	friend MyClass operator+(const MyClass& m1, const MyClass& m2);
+	MyClass(const MyClass& mc); // Copy constructor
+	
+	MyClass& operator=(const MyClass& mc); // Operator = overloading
 
+	virtual ~MyClass();
 
 	int GetX();
 	int GetY();
 	void SetX(int x);
 	void SetY(int y);
+	static int GetI();
 	void Func();
 	virtual void VirtualFunction();
-	static void FuncStat();
+	static void StaticFunct();
+
+	friend std::ostream& operator<<(std::ostream& os, const MyClass& mc);
+	friend MyClass operator+(const MyClass& m1, const MyClass& m2);
 };

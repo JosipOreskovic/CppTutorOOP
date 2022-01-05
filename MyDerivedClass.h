@@ -4,12 +4,12 @@
 
 class MyDerivedClass : public MyClass
 {
-	int z;
+	int m_z;
 public:
-	MyDerivedClass() : MyClass(), z(0) { std::cout << __func__ << " default constructor" << std::endl; }
-	MyDerivedClass(const int x, const int y, const int z) : MyClass(x,y), z(z) { std::cout << __func__ << " 1. overload constructor" << std::endl; }
+	MyDerivedClass() : MyDerivedClass(0,0,0) { std::cout << __func__ << " default constructor" << std::endl; }
+	MyDerivedClass(const int x, const int y, const int z) : MyClass(x,y), m_z(z) { std::cout << __func__ << " 1. overload constructor" << std::endl; }
 	int GetZ();
-	void Func();
-	void VirtualFunction();
+	void Func(); //Hides non-virtual function in MyClass
+	void VirtualFunction() override;
 };
 
